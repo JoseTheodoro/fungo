@@ -9,7 +9,7 @@ on:
 env:
   PROJECT_ID: fungo-lab
   REGION: us-central1
-  CLUSTER: gk3-fungo-cluster
+  CLUSTER: fungo-cluster
   REPO: fungo-repo
   IMAGE_NAME: fungo
 
