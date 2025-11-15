@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ms-goapp-ingress
+spec:
+  ingressClassName: gce
+  rules:
+    - host: goapp.34.54.158.3.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-goapp-svc
+                port:
+                  number: 80

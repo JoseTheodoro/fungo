@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-goapp
+  labels:
+    app: ms-goapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-goapp
+  template:
+    metadata:
+      labels:
+        app: ms-goapp
+    spec:
+      containers:
+        - name: ms-goapp
+          image: us-central1-docker.pkg.dev/fungo-lab/fungo-repo/fungo:v4
+          ports:
+            - containerPort: 5700
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5700
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5700
+            initialDelaySeconds: 5
+            periodSeconds: 10
