@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ms-goapp
-          image: us-central1-docker.pkg.dev/fungo-lab/fungo-repo/fungo:v4
+          image: IMAGE_PLACEHOLDER
           ports:
             - containerPort: 5700
           resources:
