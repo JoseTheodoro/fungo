@@ -15,6 +15,11 @@ func main() {
 		w.Write([]byte(message))
 	})
 
+	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+		a := uuid.New().String()
+		w.Write([]byte(a))
+	})
+
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		_, err := w.Write([]byte("OK"))

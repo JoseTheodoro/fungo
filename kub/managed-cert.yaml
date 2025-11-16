@@ -4,4 +4,4 @@ metadata:
   name: ms-goapp-cert
 spec:
   domains:
-    - goapp.34.54.158.3.nip.io
+    - goapp.34.36.81.52.nip.io
