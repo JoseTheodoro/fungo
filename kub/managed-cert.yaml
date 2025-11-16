@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: ms-goapp-cert
+spec:
+  domains:
+    - goapp.34.54.158.3.nip.io
