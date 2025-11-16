@@ -7,7 +7,7 @@ metadata:
     networking.gke.io/managed-certificates: "ms-goapp-cert"
 spec:
   rules:
-    - host: goapp.34.54.158.3.nip.io
+    - host: goapp.34.36.81.52.nip.io
       http:
         paths:
           - path: /
@@ -17,7 +17,3 @@ spec:
                 name: ms-goapp-svc
                 port:
                   number: 80
-  tls:
-    - hosts:
-        - goapp.34.54.158.3.nip.io
-      secretName: unused-secret
