@@ -35,6 +35,11 @@ jobs:
 
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
+        # instalar plugin para rodar kubectl para gcloud
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+            gcloud components install gke-gcloud-auth-plugin --quiet
+            echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> $GITHUB_ENV
 
       #########################################
       # Docker auth for Artifact Registry
