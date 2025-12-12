@@ -2,17 +2,30 @@ package main
 
 import (
 	"fmt"
-	"github.com/google/uuid"
 	"log"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 func main() {
 
+	http.HandleFunc("/api/deploy", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		message := fmt.Sprintf("Deployed %s", uuid.New().String())
+		_, err := w.Write([]byte(message))
+		if err != nil {
+			fmt.Printf("error writing response: %v", err)
+		}
+	})
+
 	http.HandleFunc("/api/hello", func(w http.ResponseWriter, r *http.Request) {
 		a := uuid.New().String()
 		message := fmt.Sprintf("Hello %s", a)
-		w.Write([]byte(message))
+		_, err := w.Write([]byte(message))
+		if err != nil {
+			fmt.Printf("error writing response: %v", err)
+		}
 	})
 
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
@@ -22,7 +35,8 @@ func main() {
 
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		_, err := w.Write([]byte("OK"))
+		message := fmt.Sprintf("OK %s", uuid.New().String())
+		_, err := w.Write([]byte(message))
 		if err != nil {
 			fmt.Printf("error writing response: %v", err)
 		}
@@ -30,7 +44,8 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		_, err := w.Write([]byte("OK"))
+		message := fmt.Sprintf("OK %s", uuid.New().String())
+		_, err := w.Write([]byte(message))
 		if err != nil {
 			fmt.Printf("error writing response: %v", err)
 		}
